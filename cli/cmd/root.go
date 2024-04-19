@@ -13,7 +13,17 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "gotiac",
 	Short: "CLI to build Infrastructure as code to deploy got resources to the AWS cloud. (other cloud providers coming)",
-	Long: `gotiac is a CLI tool that allows you to have a guided deployment process for your got related infrastructure.
+	Long: `
+	██████╗  ██████╗ ████████╗██╗ █████╗  ██████╗
+	██╔════╝ ██╔═══██╗╚══██╔══╝██║██╔══██╗██╔════╝
+	██║  ███╗██║   ██║   ██║   ██║███████║██║     
+	██║   ██║██║   ██║   ██║   ██║██╔══██║██║     
+	╚██████╔╝╚██████╔╝   ██║   ██║██║  ██║╚██████╗
+	 ╚═════╝  ╚═════╝    ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝
+
+CLI to build Infrastructure as code to deploy got resources to the AWS cloud. (other cloud providers coming)
+
+gotiac is a CLI tool that allows you to have a guided deployment process for your got related infrastructure.
 	`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
