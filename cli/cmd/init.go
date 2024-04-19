@@ -10,6 +10,8 @@ import (
 
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
+
+	"gothub-team/gotiac/util"
 )
 
 // initCmd represents the init command
@@ -18,6 +20,10 @@ var initCmd = &cobra.Command{
 	Short: "Initialize a new gotiac project.",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(util.Logo)
+		fmt.Println(util.WelcomeMessage)
+		fmt.Println()
+
 		validate := func(input string) error {
 			_, err := strconv.ParseFloat(input, 64)
 			if err != nil {
