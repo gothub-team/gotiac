@@ -4,13 +4,14 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"errors"
+	// "errors"
 	"fmt"
-	"strconv"
+	// "strconv"
 
-	"github.com/manifoldco/promptui"
+	// "github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 
+	"gothub-team/gotiac/features"
 	"gothub-team/gotiac/util"
 )
 
@@ -21,30 +22,31 @@ var initCmd = &cobra.Command{
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(util.Logo)
-		fmt.Println(util.WelcomeMessage)
+		fmt.Println(`Welcome to gotiac! Let's create the infrastructure for your got project.`)
 		fmt.Println()
 
-		validate := func(input string) error {
-			_, err := strconv.ParseFloat(input, 64)
-			if err != nil {
-				return errors.New("invalid number")
-			}
-			return nil
-		}
+		items, err := util.SelectItems(`Select the features you want to initiate.`, 0, []*util.Item{
+			{ID: "CDN"},
+			{ID: "Storage"},
+		})
 
-		prompt := promptui.Prompt{
-			Label:    "Number",
-			Validate: validate,
-		}
-
-		result, err := prompt.Run()
+		// Label:     "Select the features you want to initiate.",
 
 		if err != nil {
 			fmt.Printf("Prompt failed %v\n", err)
 			return
 		}
 
-		fmt.Printf("You choose %q\n", result)
+		for _, item := range items {
+			switch item.ID {
+			case "CDN":
+				features.Cdn()
+			case "Storage":
+				features.Storage()
+			default:
+				fmt.Printf("Unknown feature: %s\n", item.ID)
+			}
+		}
 	},
 }
 
